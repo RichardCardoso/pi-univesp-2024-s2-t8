@@ -10,7 +10,7 @@
 
   <div th:insert="fragments/header :: header"></div>
 
-  <h4 th:text="${cliente.id != null} ? 'Editar Cliente' : 'Adicionar Cliente'"></h4>
+  <h4 class="text-center" th:text="${cliente.id != null} ? 'Editar Cliente' : 'Adicionar Cliente'"></h4>
 
   <!-- Alerta de erros de validação -->
   <div class="alert alert-danger" th:if="${errors != null}">
