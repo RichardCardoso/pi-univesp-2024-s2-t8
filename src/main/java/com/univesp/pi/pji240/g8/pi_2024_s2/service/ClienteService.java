@@ -20,7 +20,7 @@ public class ClienteService {
     public static final String IDS_CLIENTE_NAO_INFORMADOS_ERRO = "É obrigatório informar um ou mais id dos clientes a inativar!";
     public static final String CLIENTE_JA_INATIVO_ERRO = "Cliente já está inativo!";
     public static final String CLIENTE_NAO_INATIVO_ERRO = "Cliente não está inativo!";
-    public static final String CPF_DUPLICADO_ERRO = "Esse cpf já está em cadastrado!";
+    public static final String CPF_DUPLICADO_ERRO = "Esse cpf já está cadastrado!";
     private static final String CLIENTE_INATIVO_ERRO = "Não é permitido editar um cliente inativo!";
     private final ClienteRepository clienteRepository;
 
