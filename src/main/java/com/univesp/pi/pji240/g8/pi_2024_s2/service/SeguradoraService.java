@@ -20,7 +20,7 @@ public class SeguradoraService {
     public static final String IDS_SEGURADORA_NAO_INFORMADOS_ERRO = "É obrigatório informar um ou mais id das seguradoras a inativar!";
     public static final String SEGURADORA_JA_INATIVA_ERRO = "Seguradora já está inativa!";
     public static final String SEGURADORA_NAO_INATIVA_ERRO = "Seguradora não está inativa!";
-    public static final String CNPJ_DUPLICADO_ERRO = "Esse cnpj já está em cadastrado!";
+    public static final String CNPJ_DUPLICADO_ERRO = "Esse cnpj já está cadastrado!";
     private static final String SEGURADORA_INATIVO_ERRO = "Não é permitido editar uma seguradora inativa!";
     private final SeguradoraRepository seguradoraRepository;
 
