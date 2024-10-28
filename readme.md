@@ -35,6 +35,13 @@ criar e implementar.
 
 ### O projeto
 
-Em construção.
-
-[Link do projeto em funcionamento](https://literary-lira-pi-univesp-2024-s2-t8-dd44bae0.koyeb.app/)
+* Backend
+  * Linguagem de programação: [Java 21](https://www.oracle.com/java/)
+  * Framework web: [Spring Boot 3](https://spring.io/projects/spring-boot)
+  * Banco de dados: [MySQL](https://www.mysql.com/)
+* Frontend
+  * Framework Web: [Thymeleaf](https://www.thymeleaf.org/) + [Bootstrap](https://getbootstrap.com/) + [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
+* Infraestrutura
+  * Host do projeto: [Koyeb](https://www.koyeb.com/)
+  * Host do banco de dados: [Aiven](https://aiven.io/)
+* [Link do projeto em funcionamento](https://literary-lira-pi-univesp-2024-s2-t8-dd44bae0.koyeb.app/)
