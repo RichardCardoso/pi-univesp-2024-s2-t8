@@ -1,30 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{base-form}" th:with="formTitle=${seguradora.id != null} ? 'Editar seguradora' : 'Adicionar seguradora'">
 <head>
-  <meta charset="UTF-8">
-  <title>Adicionar/Editar Seguradora</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <title>Seguradora</title>
 </head>
 <body>
-<div class="container mt-5">
-
-  <div th:insert="fragments/header :: header"></div>
-
-  <h4 class="text-center" th:text="${seguradora.id != null} ? 'Editar seguradora' : 'Adicionar seguradora'"></h4>
-
-  <!-- Alerta de erros de validação -->
-  <div class="alert alert-danger" th:if="${errors != null}">
-    <ul>
-      <li th:each="error : ${errors}" th:text="${error.defaultMessage}"></li>
-    </ul>
-  </div>
-
-  <!-- Formulário para criação ou edição -->
+<section layout:fragment="content">
+  <!-- Formulário para criação ou edição de seguradora -->
   <form th:action="${seguradora.id != null} ? @{/ui/seguradoras/{id}(id=${seguradora.id})} : @{/ui/seguradoras}"
         th:object="${seguradora}"
-        method="post">
+        method="post"
+        onsubmit="showLoader()">
 
-    <input type="hidden" th:if="${seguradora.id != null}" name="_method" value="put" />
+    <input type="hidden" th:if="${seguradora.id != null}" name="_method" value="put"/>
 
     <div class="mb-3">
       <label for="nome" class="form-label">Nome</label>
@@ -44,8 +31,8 @@
     </div>
 
     <button type="submit" class="btn btn-success" th:text="${seguradora.id != null} ? 'Atualizar' : 'Salvar'"></button>
-    <a th:href="@{/ui/seguradoras}" class="btn btn-secondary">Cancelar</a>
+    <a th:href="@{/ui/seguradoras}" class="btn btn-secondary" onclick="showLoader()">Cancelar</a>
   </form>
-</div>
+</section>
 </body>
 </html>
