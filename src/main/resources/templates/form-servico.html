@@ -1,42 +1,29 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{base-form}" th:with="formTitle=${servico.id != null} ? 'Editar serviço' : 'Adicionar serviço'">
 <head>
-  <meta charset="UTF-8">
-  <title>Adicionar/Editar Servico</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <title>Serviço</title>
 </head>
 <body>
-<div class="container mt-5">
-
-  <div th:insert="fragments/header :: header"></div>
-
-  <h4 class="text-center" th:text="${servico.id != null} ? 'Editar servico' : 'Adicionar servico'"></h4>
-
-  <!-- Alerta de erros de validação -->
-  <div class="alert alert-danger" th:if="${errors != null}">
-    <ul>
-      <li th:each="error : ${errors}" th:text="${error.defaultMessage}"></li>
-    </ul>
-  </div>
-
-  <!-- Formulário para criação ou edição -->
+<section layout:fragment="content">
+  <!-- Formulário para criação ou edição de serviço -->
   <form th:action="${servico.id != null} ? @{/ui/servicos/{id}(id=${servico.id})} : @{/ui/servicos}"
         th:object="${servico}"
-        method="post">
+        method="post"
+        onsubmit="showLoader()">
 
-    <input type="hidden" th:if="${servico.id != null}" name="_method" value="put" />
+    <input type="hidden" th:if="${servico.id != null}" name="_method" value="put"/>
 
     <div class="mb-3">
       <label for="descricao" class="form-label">Descrição</label>
-      <input type="text" th:field="*{descricao}" class="form-control" id="descricao" placeholder="Digite a descricao" required>
+      <input type="text" th:field="*{descricao}" class="form-control" id="descricao" placeholder="Digite a descrição" required>
     </div>
     <div class="mb-3">
       <label for="tipoServico" class="form-label">Tipo</label>
-      <input type="text" th:field="*{tipoServico}" class="form-control" id="tipoServico" placeholder="Digite o Tipo" required>
+      <input type="text" th:field="*{tipoServico}" class="form-control" id="tipoServico" placeholder="Digite o tipo" required>
     </div>
     <div class="mb-3">
       <label for="preco" class="form-label">Preço</label>
-      <input type="number" step=".01" th:field="*{preco}" class="form-control" id="preco" placeholder="Digite o preco" required>
+      <input type="number" step=".01" th:field="*{preco}" class="form-control" id="preco" placeholder="Digite o preço" required>
     </div>
     <div class="mb-3">
       <label for="seguradora" class="form-label">Seguradora</label>
@@ -50,8 +37,8 @@
     </div>
 
     <button type="submit" class="btn btn-success" th:text="${servico.id != null} ? 'Atualizar' : 'Salvar'"></button>
-    <a th:href="@{/ui/servicos}" class="btn btn-secondary">Cancelar</a>
+    <a th:href="@{/ui/servicos}" class="btn btn-secondary" onclick="showLoader()">Cancelar</a>
   </form>
-</div>
+</section>
 </body>
 </html>
