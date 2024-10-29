@@ -1,9 +1,9 @@
 create database if not exists univesp_pi_2024_s2;
 
 create table if not exists univesp_pi_2024_s2.cliente (
-	id_cliente SERIAL PRIMARY KEY,
+	id_cliente int not null auto_increment PRIMARY KEY,
     nome varchar(100) NOT NULL,
-    cpf varchar(11) unique NOT NULL,
+    cpf varchar(14) unique NOT NULL,
     telefone varchar(15) NOT NULL,
     email varchar(100) NOT NULL,
     endereco varchar(200) NOT NULL,
@@ -28,3 +28,15 @@ CREATE TABLE IF NOT EXISTS univesp_pi_2024_s2.servico (
     data_exclusao TIMESTAMP,
     FOREIGN KEY (id_seguradora) REFERENCES univesp_pi_2024_s2.seguradora(id_seguradora)
 );
+
+CREATE TABLE IF NOT EXISTS univesp_pi_2024_s2.servicoAdquirido (
+    id_servico_adquirido INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_servico INT NOT NULL,
+    id_cliente INT NOT NULL,
+    data_aquisicao TIMESTAMP,
+    valor_pago DECIMAL(10, 2) NOT NULL,
+    data_exclusao TIMESTAMP,
+    FOREIGN KEY (id_servico) REFERENCES univesp_pi_2024_s2.servico(id_servico),
+    FOREIGN KEY (id_cliente) REFERENCES univesp_pi_2024_s2.cliente(id_cliente)
+);
+
